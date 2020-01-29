@@ -1,12 +1,10 @@
-'use strict';
-
 require('dotenv').config();
 const express = require('express');
-var cors = require('cors');
-var logger = require('morgan');
-var passport = require('passport');
+const cors = require('cors');
+const logger = require('morgan');
+const passport = require('passport');
 
-var app = express();
+const app = express();
 
 // var mainRouter = require("./routes/main.routes");
 // require('./server/services/passport.strategy');
@@ -15,12 +13,12 @@ var app = express();
  * configure app
  */
 app
-    .options('*', cors())
-    .use(cors())
-    .use(logger('dev'))
-    .use(passport.initialize())
-    .use(express.json())
-    .use(express.urlencoded({ extended: false }))
-    // .use("/api", mainRouter)
+  .options('*', cors())
+  .use(cors())
+  .use(logger('dev'))
+  .use(passport.initialize())
+  .use(express.json())
+  .use(express.urlencoded({ extended: false }));
+// .use("/api", mainRouter)
 
 module.exports = app;
