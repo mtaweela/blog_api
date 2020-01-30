@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
 
-function hashPassword(user) {
+const { encrypt } = require('../services/ecrypt');
+
+async function hashPassword(user) {
   if (user.changed('password')) {
-    return bcrypt.hash(user.password, 10).then((password) => {
-      user.password = password;
-    });
+    user.password = await encrypt(user.password);
   }
   return user.password;
 }
