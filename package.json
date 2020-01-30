@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mtaweela/blog_api#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.0",
     "bcrypt": "^3.0.7",
     "cors": "^2.8.5",
     "debug": "^4.1.1",

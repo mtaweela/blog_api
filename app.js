@@ -6,8 +6,8 @@ const passport = require('passport');
 
 const app = express();
 
-// var mainRouter = require("./routes/main.routes");
-// require('./server/services/passport.strategy');
+const mainRouter = require('./server/routes/main.routes');
+require('./server/services/passport.strategy');
 
 /**
  * configure app
@@ -18,7 +18,8 @@ app
   .use(logger('dev'))
   .use(passport.initialize())
   .use(express.json())
-  .use(express.urlencoded({ extended: false }));
-// .use("/api", mainRouter)
+  .use(express.urlencoded({ extended: false }))
+  .use('/api', mainRouter)
+  .use('*', (req, res) => res.status(404).json({ details: 'wrong url' }));
 
 module.exports = app;

@@ -6,14 +6,10 @@ module.exports = {
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    email: {
+    username: {
       type: Sequelize.STRING,
-    },
-    firstName: {
-      type: Sequelize.STRING,
-    },
-    lastName: {
-      type: Sequelize.STRING,
+      unique: true,
+      allowNull: false,
     },
     isAdmin: {
       type: Sequelize.BOOLEAN,
