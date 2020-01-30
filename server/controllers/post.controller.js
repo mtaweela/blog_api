@@ -1,7 +1,7 @@
 const debug = require('debug')('blog_api:postController');
 
 const { Post } = require('../models');
-
+const { PostQueryValidator } = require('../validators/Post');
 
 /**
  * User methods
@@ -21,12 +21,17 @@ const addPost = (req, res) => {
 };
 
 const getPosts = (req, res) => {
-  Post.findAll().then((posts) => {
-    return res.json(posts);
-  }).catch((err) => {
-    debug(err);
-    return res.status(500).json({ details: 'There was an error!' });
-  });
+  const { error } = PostQueryValidator.validate(req.query);
+  if (error) return res.status(400).json(error);
+
+  Post.findAll({
+    where: req.query,
+  })
+    .then((posts) => res.json(posts))
+    .catch((err) => {
+      debug(err);
+      return res.status(500).json({ details: 'There was an error!' });
+    });
 };
 
 const getPostById = (req, res) => {
