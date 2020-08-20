@@ -22,7 +22,7 @@
   "homepage": "https://github.com/mtaweela/blog_api#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.0",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
